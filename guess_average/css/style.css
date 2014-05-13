@@ -1,0 +1,77 @@
+/* Colours */
+body,html{
+	background-color: #F0F0F0;
+}
+
+#header,#footer{
+	background: #DDD;
+}
+
+#sidebar,#wrap{
+	background: #DDE;
+}
+
+#content{
+	background: #EEE;
+}
+
+
+
+/* Box Structure */
+#header{
+	padding:10px;
+	margin:0;
+}
+#wrap{
+	width:800px;
+	margin:0 auto;
+}
+
+#content{
+	width:630px;
+	height:600px;
+	padding:10px;
+	float:right;
+	overflow:auto;
+}
+
+#sidebar{
+	width:130px;
+	padding:10px;
+	float:left;
+}
+
+#footer{
+	text-align:right;
+	clear:both;
+}
+
+/* Text Colors */
+h1 {
+	color: #669;
+	margin:0;
+}
+h2 {
+	color: #669;
+}
+
+
+/* Link Settings*/
+a:link{
+	color: #336;
+	text-decoration:none;
+}
+
+a:visited{
+	color: #336;
+	text-decoration:none;
+}
+
+a:hover{
+	color: orange;
+	text-decoration:none;
+}
+
+a:active{
+	text-decoration:none;
+}
