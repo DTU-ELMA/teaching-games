@@ -1,7 +1,7 @@
 <?php
 // define variables and set to empty values
-$nameErr = $guessErr = "";
-$name = $guess = $id = "";
+$nameErr = $bidErr = "";
+$name = $bid = $id = "";
 $message = "";
 
 function test_input($data) {
@@ -29,23 +29,23 @@ if (isset($_COOKIE["userID"])) {
 }
 
   if (empty($_POST["guess"])) {
-    $guessErr = "Guess is required";
+    $bidErr = "A price bid is required";
   } else {
-    $guess = test_input($_POST["guess"]);
+    $bid = test_input($_POST["guess"]);
     // check if guess is a number
-    if (!is_numeric($guess)) {
-      $guessErr = "Guess must be a number from 0 to 100, not" . $guess;
+    if (!is_numeric($bid)) {
+      $bidErr = "Price bid must be a number from 0 to 100, not" . $bid;
     }
-    if ($guess < 0.0 or $guess > 100.0) {
-      $guessErr = "Guess must be a number from 0 to 100!";
+    if ($bid < 0.0 or $bid > 100.0) {
+      $bidErr = "Price bid must be a number from 0 to 100!";
     }
 
   }
 
-    if(empty($guessErr) and empty($nameErr)) {
-      $file = "php/guesses.txt";
-      file_put_contents($file, $userID . "," . $name . "," . $guess . PHP_EOL, FILE_APPEND | LOCK_EX);
-      $message = "Succesfully submitted guess " . $guess . " from " . $name . " (ID: " . $userID . ").";
+    if(empty($bidErr) and empty($nameErr)) {
+      $file = "php/bids.txt";
+      file_put_contents($file, $userID . "," . $name . "," . $bid . PHP_EOL, FILE_APPEND | LOCK_EX);
+      $message = "Succesfully submitted cost bid " . $bid . " from " . $name . " (ID: " . $userID . ").";
     }
 
 }
@@ -53,17 +53,18 @@ if (isset($_COOKIE["userID"])) {
 
 <h2>Bid your wind production</h2>
 
-<p>Your wind production will be either 5, 10 or 15 MW. Everyone else's wind production is uncorrelated from yours. Any uncovered load will be covered by an oil plant at 100&#36;&#47;MWh.</p>
+<p>Your wind production will be either 5, 10 or 15 MW. Everyone else's wind production is uncorrelated from yours. Total system load is 8 MW per player. Any uncovered load will be covered by an oil plant at 100&#36;&#47;MW.</p>
 
+<p>You only need to bid a price of your production; The amount you produce will be determined in real time.</p>
 
-<p>Your marginal cost of production is <b><?php echo number_format(($cookie * 10.0) / 30000 + 5.0, 2, '.', ','); ?></b>&#36;&#47;MWh .</p>
+<p>Your marginal cost of production is <b><?php echo number_format(($cookie * 10.0) / 30000 + 5.0, 2, '.', ','); ?> </b>&#36;&#47;MW.</p>
 
 <form method="post" action="index.php?page=guess">  <!-- action="<?php echo htmlspecialchars($_SERVER["PHP_SELF "]);?>"> -->
 Name: <input type="text" name="name" value="<?php echo $name;?>">
 <span class="error"> <?php echo $nameErr;?></span>
 <br><br>
-Cost bid (0-100): <input type="number" min=0 max=100 step=0.01 name="guess" value="<?php echo $guess;?>">
-<span class="error"> <?php echo $guessErr;?></span>
+Price bid (0.00-100.00): <input type="number" min=0 max=100 step=0.01 name="guess" value="<?php echo $bid;?>">
+<span class="error"> <?php echo $bidErr;?></span>
 <br><br>
 <input type="submit" name="submit" value="Submit">
 </form>
