@@ -26,8 +26,10 @@ $file = fopen("php/guesses.txt", "r") or exit("Unable to open file!");
 while(!feof($file))
   {
 	$line=fgets($file);
-	$part=explode(",",$line);
-	$guessarray[$part[0]] = array($part[1], $part[2]);
+	if(!empty($line)){
+		$part=explode(",",$line);
+		$guessarray[$part[0]] = array($part[1], $part[2]);
+	}
   }
 fclose($file);
 
@@ -44,8 +46,8 @@ foreach ($guessarray as $part){
 
 $average = $average *2/(3*$n);
 
-$bestguess = 0.0;
-$bestdist = 200.0;
+$bestguess = -1.0;
+$bestdist = 20000.0;
 $bestnames = array();
 foreach ($guessarray as $part){
   $dist = abs($part[1] - $average);
