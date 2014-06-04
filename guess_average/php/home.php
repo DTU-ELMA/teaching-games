@@ -1,4 +1,4 @@
-<h2>A simple bidding game</h2>
+<h2>Rules</h2>
 
 <p> The rules of the game are simple:
 Each participant bids a number between 0 and 100.

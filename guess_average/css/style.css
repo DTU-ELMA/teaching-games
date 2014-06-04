@@ -1,18 +1,19 @@
 /* Colours */
+/* #7D1935  #4A96AD  #F5F3EE  #FFFFFF */
 body,html{
-	background-color: #F0F0F0;
+	background-color: #FFFFFF;
 }
 
 #header,#footer{
-	background: #DDD;
+	background: #7D1935;
 }
 
 #sidebar,#wrap{
-	background: #DDE;
+	background: #4A96AD;
 }
 
 #content{
-	background: #EEE;
+	background: #F5F3EE;
 }
 
 
@@ -48,22 +49,31 @@ body,html{
 
 /* Text Colors */
 h1 {
-	color: #669;
+	color: #F5F3EE;
 	margin:0;
+	font-family: "Trebuchet MS";
+	font-size: 2.5em;
 }
 h2 {
-	color: #669;
+	color: #333333;
+	font-family: "Trebuchet MS";
+	font-size: 1.8em;
+}
+body {
+	color: #333333;
+	font-family: "Trebuchet MS";
+	font-size: 1.2em;
 }
 
 
 /* Link Settings*/
 a:link{
-	color: #336;
+	color: #F5F3EE;
 	text-decoration:none;
 }
 
 a:visited{
-	color: #336;
+	color: #F5F3EE;
 	text-decoration:none;
 }
 

@@ -72,14 +72,15 @@ class Market:
     def plot(self):
         plt.ion()
         plt.figure(1)
-        plt.clf()
+        plt.subplot(121)
+        plt.cla()
         self.plot_bid_curve()
+        plt.subplot(122)
+        plt.cla()
+        self.plot_profits()
         plt.figure(2)
         plt.clf()
         self.plot_mc_curve()
-        plt.figure(3)
-        plt.clf()
-        self.plot_profits()
 
     def plot_bid_curve(self):
         pids = {pid:self.players[pid].curbid for pid in self._playerlist}
@@ -139,6 +140,7 @@ class Player:
         self.bidlist = []
         self.pabprofitlist = []
         self.mcprofitlist = []
+        self.prodlist = []
         self.totalprod = 0
     def setbid(self, bid):
         self.curbid = bid
@@ -148,3 +150,4 @@ class Player:
         self.pabprofitlist.append((self.curbid-self.mc)*self.curprod)
         self.mcprofitlist.append((price-self.mc)*self.curprod)
         self.totalprod += self.curprod
+        self.prodlist.append(self.curprod)

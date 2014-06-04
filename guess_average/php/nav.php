@@ -1,2 +1,2 @@
-<a href=index.php>Home</a><br />
-<a href=index.php?page=guess>Input guess</a><br />
+<p><a href=index.php>Home</a></p>
+<p><a href=index.php?page=guess>Input guess</a></p>
