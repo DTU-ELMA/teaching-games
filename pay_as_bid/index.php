@@ -17,7 +17,7 @@ if (isset($_COOKIE["userID"])){
 <body>
 <div id="wrap">
 	<div id="header">
-		<h1>Bidding game</h1>
+		<h1>Bidding game 2: Bid harder</h1>
 	</div> <!-- End Header -->
 	<div id="sidebar">
 		<?php include("php/nav.php"); ?>

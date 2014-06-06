@@ -19,65 +19,31 @@ function aasort (&$array, $key) {
     $array=$ret;
 }
 
+
+if (isset($_COOKIE["userID"])) {
+  $userID = $_COOKIE["userID"];
+} else {
+  $userID = -1;
+}
+
 $guessarray = array();
-$userarray = array();
-$file = fopen("php/guesses.txt", "r") or exit("Unable to open file!");
+$file = fopen("php/stats.txt", "r") or exit("Unable to open file!");
 //Output a line of the file until the end is reached
 while(!feof($file))
   {
 	$line=fgets($file);
 	if(!empty($line)){
 		$part=explode(",",$line);
-		$guessarray[$part[0]] = array($part[1], $part[2]);
+		$guessarray[$part[0]] = array($part[1], $part[2], $part[3], $part[4]);
 	}
   }
 fclose($file);
 
-//Sort array by guess
-aasort($guessarray,1);
+if(array_key_exists($userID,$guessarray)){
+    echo "<p><font size = \"4\" >ID: " . number_format($userID,0) . " last produced " . number_format($guessarray[$userID][1],0) . " MWh of which " . number_format($guessarray[$userID][2],0) . " was scheduled at " . number_format($guessarray[$userID][0],2) ."&#36;&#47;MW. </p> <p>A total of " . number_format($guessarray[$userID][3],2) . "&#36; earned so far.</font></p>";
+} else {
 
-//Calculate average
-$average = 0.0;
-$n = 0;
-foreach ($guessarray as $part){
-  $average += $part[1];
-  $n += 1;
+    echo "<p><font size = \"4\" >ID: " . number_format($userID,2) . " not found.</font></p>";
 }
 
-$average = $average *2/(3*$n);
-
-$bestguess = -1.0;
-$bestdist = 20000.0;
-$bestnames = array();
-foreach ($guessarray as $part){
-  $dist = abs($part[1] - $average);
-  if($dist <= $bestdist){
-    if($part[1]==$bestguess){
-      $bestnames[] = $part[0];
-    } else {
-      $bestnames = array($part[0]);
-    }
-    $bestdist = $dist;
-    $bestguess = $part[1];
-  }
-}
-
-
-
-echo "<p><font size = \"6\" >2/3rds of average: " . number_format($average,2) . "</font></p>";
-
-echo "<p><font size = \"6\" >Best guess: " . number_format($bestguess,2) . " by ";
-foreach ($bestnames as $thename) {
-  echo $thename . ", ";
-}
-echo "</font></p>";
-
-
-echo "<table>";
-  echo "<tr><td>"."Name"."</td><td>"."Guess"."</td></tr>";
-
-foreach ($guessarray as $userID => $part){
-  echo "<tr><td>".$part[0]."</td><td>".$part[1]."</td></tr>";
-}
-echo "</table>";
 ?>

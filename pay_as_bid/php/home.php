@@ -1,4 +1,4 @@
-<h2>Bidding into a </h2>
+<h2>Bidding into a pay-as-bid market</h2>
 
 <p>
     Each person gets a wind turbine which can produce at either 5, 10 or 15 MW in each hour at a marginal cost of between 5-15&#36;&#47;MWh.
@@ -7,7 +7,7 @@
 </p>
 
 <p>
-    The demand on the system will be 8MWh per person (you may become a marginal producer).
+    The demand on the system will be 8MWh times the number of players (you may become a marginal producer).
     Any residual demand will be handled by a large oil plant with a marginal cost of 100&#36;&#47;MWh.
 </p>
 
