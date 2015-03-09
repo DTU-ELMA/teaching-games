@@ -37,9 +37,10 @@ while(!feof($file))
 		$part=explode(",",$line);
     if(!(in_array($part[0], profitsumarray))){
       $profitsumarray[$part[0]] = 0.00;
+      echo "<p>triggered zero on </p>" . $part[0];
     }
 		$guessarray[$part[0]] = array($part[1], $part[2], $part[3], $part[4]);
-    $profitsumarray[$part[0]] += $part[3];
+    $profitsumarray[$part[0]] += $part[4];
     echo "<p>".$profitsumarray[$part[0]]."</p>";
 	}
   }
