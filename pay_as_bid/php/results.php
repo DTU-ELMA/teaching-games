@@ -1,4 +1,4 @@
-<h2>Results</h2>
+<!-- <h2>Results</h2> -->
 
 <p><img src="pic/out.png" alt="Mountain View" style="width:800px;height:500px"></p>
 
