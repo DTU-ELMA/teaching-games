@@ -24,12 +24,12 @@ body,html{
 	margin:0;
 }
 #wrap{
-	width:800px;
+	width:1024px;
 	margin:0 auto;
 }
 
 #content{
-	width:630px;
+	width:830px;
 	height:600px;
 	padding:10px;
 	float:right;
