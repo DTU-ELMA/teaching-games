@@ -39,7 +39,7 @@ while(!feof($file))
       $profitsumarray[$part[0]] = 0.00;
     }
 		$guessarray[$part[0]] = array($part[1], $part[2], $part[3], $part[4]);
-    $profitsumarray[$part[0]] += number_format($guessarray[$userID][3],2);
+    $profitsumarray[$part[0]] += float($part[3])
 	}
   }
 fclose($file);
