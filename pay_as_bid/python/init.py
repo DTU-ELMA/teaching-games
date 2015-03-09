@@ -98,6 +98,7 @@ class Market:
         plt.subplot(122)
         plt.cla()
         self.plot_profits()
+        plt.tight_layout()
         plt.savefig('../pic/out.png')
         plt.figure(2, figsize=(8,5), dpi=100)
         plt.subplot(121)
@@ -106,6 +107,7 @@ class Market:
         plt.subplot(122)
         plt.cla()
         self.plot_profits()
+        plt.tight_layout()
 #        plt.figure(2)
 #        plt.clf()
 #        self.plot_mc_curve()
@@ -127,6 +129,8 @@ class Market:
         plt.axvline(self.demand,lw=3,ls='--',c='k')
         plt.axhline(sybidless[-1],lw=3,ls='..',c='k')
         plt.title('Final price: {:.02f}'.format(sybidless[-1]))
+        plt.xlabel('Amount [MWh]')
+        plt,ylabel('Price [$/MWh]')
 
     def plot_mc_curve(self):
         pids = {pid:self.players[pid].mc for pid in self._playerlist}
@@ -156,11 +160,13 @@ class Market:
             plt.plot(np.cumsum(p.pabprofitlist),c='k',marker='.')
             # plt.plot(np.cumsum(p.mcprofitlist),c='r',marker='.')
         plt.title('Current leader: {0} with a profit of {1:.01f}'.format(bestname, bestprofit))
+        plt.xlabel('Round number [MWh]')
+        plt,ylabel('Profit [$]')
 
     def write_stats_file(self):
         outArr = []
         for pid,p in self.players.iteritems():
-            outArr.append(map(float,[p.ID,p.curbid,p.curprod,p.schedprod,sum(p.pabprofitlist)])
+            outArr.append(map(float,[p.ID,p.curbid,p.curprod,p.schedprod,sum(p.pabprofitlist)]))
         np.savetxt('../php/stats.txt',outArr,fmt='%d,%.02f,%.02f,%.02f,%.02f')
 
 
