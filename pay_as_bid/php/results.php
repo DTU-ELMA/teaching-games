@@ -40,6 +40,7 @@ while(!feof($file))
     }
 		$guessarray[$part[0]] = array($part[1], $part[2], $part[3], $part[4]);
     $profitsumarray[$part[0]] += $part[3];
+    echo "<p>".$profitsumarray[$part[0]]."</p>"
 	}
   }
 fclose($file);
