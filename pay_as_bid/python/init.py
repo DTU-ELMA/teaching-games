@@ -183,10 +183,19 @@ class Market:
                     "potential": [v for v in p.potprodlist],
                     "price": [v for v in p.pricelist]
                 }), ignore_index=True)
+        df['cumulative_profit'] = (df.pab_profits - df.up_profit)
+        df['cumulative_profit'] = df.groupby('player_ID')['cumprof'].cumsum()
         self.df = df
         return df
 
-
+    def plot_pandas(self):
+        try:
+            df = self.df
+        except AttributeError:
+            df = self.get_pandas_dataframe()
+        plt.figure(3, figsize=(8,5), dpi=100)
+        df.groupby('player_ID').sum().plot(kind='scatter', x='potential', y='pab_profit')
+        plt.ylabel('Pay-as-bid profit')
 
 class Player:
     def __init__(self, ID = -1,name=''):
