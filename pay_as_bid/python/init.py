@@ -87,7 +87,7 @@ class Market:
 
     def plot(self):
         plt.ion()
-        plt.figure(1, figsize=(6,5), dpi=100)
+        plt.figure(1, figsize=(8,5), dpi=100)
         plt.subplot(121)
         plt.cla()
         self.plot_bid_curve()
@@ -95,7 +95,7 @@ class Market:
         plt.cla()
         self.plot_profits()
         plt.savefig('../pic/out.png')
-        plt.figure(2, figsize=(6,5), dpi=100)
+        plt.figure(2, figsize=(8,5), dpi=100)
         plt.subplot(121)
         plt.cla()
         self.plot_bid_curve()
