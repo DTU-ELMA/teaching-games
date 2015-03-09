@@ -183,7 +183,7 @@ class Market:
                     "potential": [v for v in p.potprodlist],
                     "price": [v for v in p.pricelist]
                 }), ignore_index=True)
-        df['cumulative_profit'] = (df.pab_profits - df.up_profit)
+        df['cumulative_profit'] = (df.pab_profit - df.up_profit)
         df['cumulative_profit'] = df.groupby('player_ID')['cumprof'].cumsum()
         self.df = df
         return df
