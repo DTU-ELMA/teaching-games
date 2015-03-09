@@ -1,6 +1,7 @@
 import random, csv
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 from itertools import chain,cycle,islice
 
 def roundrobin(*iterables):
@@ -37,9 +38,10 @@ class Market:
             if ID in self._playerlist:
                 self.players[ID].setbid(float(bid))
         self.schedule_production()
+        price = self.get_current_pay_as_bid_price().
         for p in self.players.itervalues():
-            p.push_bid_and_profit(self.get_current_pay_as_bid_price())
-            self.papricelist.append(self.get_current_pay_as_bid_price())
+            p.push_bid_and_profit(price)
+            self.papricelist.append(price)
         self.write_stats_file()
 
     def load_first_bids(self):
@@ -159,7 +161,7 @@ class Market:
                 bestname = p.name
             plt.plot(np.cumsum(p.pabprofitlist),c='k',marker='.')
             # plt.plot(np.cumsum(p.mcprofitlist),c='r',marker='.')
-        plt.title('Current leader: {0} with a profit of {1:.01f}'.format(bestname, bestprofit))
+        plt.title('Current leader: {0} \n with a profit of {1:.01f}'.format(bestname, bestprofit))
         plt.xlabel('Round number [MWh]')
         plt.ylabel('Profit [$]')
 
@@ -169,6 +171,20 @@ class Market:
             outArr.append(map(float,[p.ID,p.curbid,p.curprod,p.schedprod,sum(p.pabprofitlist)]))
         np.savetxt('../php/stats.txt',outArr,fmt='%d,%.02f,%.02f,%.02f,%.02f')
 
+    def get_pandas_dataframe(self):
+        df = pd.DataFrame()
+        for pid, p in self.players.iteritems():
+            df = df.append(pd.DataFrame({
+                    "player_ID": [pid for _ in p.bidlist],
+                    "round": [i for i,_ in enumerate(p.bidlist)],
+                    "pab_profit": [v for v in p.pabprofitlist],
+                    "up_profit": [v for v in p.mcprofitlist],
+                    "scheduled": [v for v in p.prodlist],
+                    "potential": [v for v in p.potprodlist],
+                    "price": [v for v in p.pricelist]
+                }), ignore_index=True)
+        self.df = df
+        return df
 
 
 
@@ -182,6 +198,8 @@ class Player:
         self.pabprofitlist = []
         self.mcprofitlist = []
         self.prodlist = []
+        self.potprodlist = []
+        self.pricelist = []
         self.totalprod = 0
     def setbid(self, bid):
         self.curbid = bid
@@ -193,3 +211,5 @@ class Player:
         self.mcprofitlist.append((price-self.mc)*self.schedprod)
         self.totalprod += self.schedprod
         self.prodlist.append(self.schedprod)
+        self.potprodlist.append(self.curprod)
+        self.pricelist.append(price)

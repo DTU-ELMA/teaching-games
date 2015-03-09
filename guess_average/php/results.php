@@ -68,7 +68,7 @@ echo "<p><font size = \"6\" >2/3rds of average: " . number_format($average,2) . 
 
 echo "<p><font size = \"6\" >Best guess: " . number_format($bestguess,2) . " by ";
 foreach ($bestnames as $thename) {
-  echo $thename . ", ";
+  echo $thename . " ";
 }
 echo "</font></p>";
 
