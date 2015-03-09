@@ -83,6 +83,6 @@ echo "<tr>";
 foreach ($guessarray as $userID => $part){
   echo "<td>".$part[1]."</td>";
 }
-echo "</tr>"
+echo "</tr>";
 echo "</table>";
 ?>
