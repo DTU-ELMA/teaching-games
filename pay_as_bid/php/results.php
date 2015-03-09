@@ -36,10 +36,10 @@ while(!feof($file))
 	if(!empty($line)){
 		$part=explode(",",$line);
     if(!(in_array($part[0], profitsumarray))){
-      $profitsumarray[$part[0]] = 0.00
+      $profitsumarray[$part[0]] = 0.00;
     }
 		$guessarray[$part[0]] = array($part[1], $part[2], $part[3], $part[4]);
-    $profitsumarray[$part[0]] += number_format($guessarray[$userID][3],2)
+    $profitsumarray[$part[0]] += number_format($guessarray[$userID][3],2);
 	}
   }
 fclose($file);
