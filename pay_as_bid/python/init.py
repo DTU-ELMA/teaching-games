@@ -130,7 +130,7 @@ class Market:
         plt.axhline(sybidless[-1],lw=3,ls='..',c='k')
         plt.title('Final price: {:.02f}'.format(sybidless[-1]))
         plt.xlabel('Amount [MWh]')
-        plt,ylabel('Price [$/MWh]')
+        plt.ylabel('Price [$/MWh]')
 
     def plot_mc_curve(self):
         pids = {pid:self.players[pid].mc for pid in self._playerlist}
@@ -161,7 +161,7 @@ class Market:
             # plt.plot(np.cumsum(p.mcprofitlist),c='r',marker='.')
         plt.title('Current leader: {0} with a profit of {1:.01f}'.format(bestname, bestprofit))
         plt.xlabel('Round number [MWh]')
-        plt,ylabel('Profit [$]')
+        plt.ylabel('Profit [$]')
 
     def write_stats_file(self):
         outArr = []
