@@ -38,7 +38,7 @@ class Market:
             if ID in self._playerlist:
                 self.players[ID].setbid(float(bid))
         self.schedule_production()
-        price = self.get_current_pay_as_bid_price().
+        price = self.get_current_pay_as_bid_price()
         for p in self.players.itervalues():
             p.push_bid_and_profit(price)
             self.papricelist.append(price)
