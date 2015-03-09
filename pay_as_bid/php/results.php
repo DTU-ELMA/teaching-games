@@ -39,7 +39,7 @@ while(!feof($file))
       $profitsumarray[$part[0]] = 0.00;
     }
 		$guessarray[$part[0]] = array($part[1], $part[2], $part[3], $part[4]);
-    $profitsumarray[$part[0]] += $part[3]
+    $profitsumarray[$part[0]] += $part[3];
 	}
   }
 fclose($file);
