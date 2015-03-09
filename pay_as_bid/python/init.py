@@ -162,7 +162,7 @@ class Market:
             plt.plot(np.cumsum(p.pabprofitlist),c='k',marker='.')
             # plt.plot(np.cumsum(p.mcprofitlist),c='r',marker='.')
         plt.title('Current leader: {0} \n with a profit of {1:.01f}'.format(bestname, bestprofit))
-        plt.xlabel('Round number [MWh]')
+        plt.xlabel('Round number')
         plt.ylabel('Profit [$]')
 
     def write_stats_file(self):
@@ -184,7 +184,7 @@ class Market:
                     "price": [v for v in p.pricelist]
                 }), ignore_index=True)
         df['cumulative_profit'] = (df.pab_profit - df.up_profit)
-        df['cumulative_profit'] = df.groupby('player_ID')['cumprof'].cumsum()
+        df['cumulative_profit'] = df.groupby('player_ID')['cumulative_profit'].cumsum()
         self.df = df
         return df
 
