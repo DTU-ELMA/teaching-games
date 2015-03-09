@@ -194,8 +194,16 @@ class Market:
         except AttributeError:
             df = self.get_pandas_dataframe()
         plt.figure(3, figsize=(8,5), dpi=100)
-        df.groupby('player_ID').sum().plot(kind='scatter', x='potential', y='pab_profit')
+        ax3 = plt.axes()
+        df.groupby('player_ID').sum().plot(kind='scatter', x='potential', y='pab_profit', ax=ax3)
         plt.ylabel('Pay-as-bid profit')
+        plt.figure(4, figsize=(8,5), dpi=100)
+        ax4 = plt.axes()
+        gb = df.groupby('player_ID')
+        for id, g in gb:
+            g.plot(x='round', y='cumulative_profit', marker='.', ax=ax4)
+        plt.xlabel('Round')
+        plt.ylabel('PAB Profit - UP Profit')
 
 class Player:
     def __init__(self, ID = -1,name=''):
