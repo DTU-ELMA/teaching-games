@@ -28,6 +28,10 @@ class Market:
         self._playerlist = set()
         self.bidfile = bidfile
 
+    def update(self):
+        self.load_latest_bids()
+        self.plot()
+
     def load_latest_bids(self):
         for ID,name,bid in self.readfile():
             if ID in self._playerlist:
@@ -144,14 +148,13 @@ class Market:
 
 
     def plot_profits(self):
-        for p in self.players.itervalues():
-            plt.plot(np.cumsum(p.pabprofitlist),c='k',marker='.')
-            plt.plot(np.cumsum(p.mcprofitlist),c='r',marker='.')
         bestprofit = -100.0
         for p in self.players.itervalues():
             if sum(p.pabprofitlist) > bestprofit:
                 bestprofit = sum(p.pabprofitlist)
                 bestname = p.name
+            plt.plot(np.cumsum(p.pabprofitlist),c='k',marker='.')
+            # plt.plot(np.cumsum(p.mcprofitlist),c='r',marker='.')
         plt.title('Current leader: {0} with a profit of {1:.01f}'.format(bestname, bestprofit))
 
     def write_stats_file(self):
@@ -162,11 +165,13 @@ class Market:
 
 
 
+
 class Player:
     def __init__(self, ID = -1,name=''):
         self.ID = ID
         self.name = name
-        self.mc = round((int(ID) * 10.0)/30000 + 5,2)
+#        self.mc = round((int(ID) * 10.0)/30000 + 5,2)
+        self.mc = 0
         self.bidlist = []
         self.pabprofitlist = []
         self.mcprofitlist = []

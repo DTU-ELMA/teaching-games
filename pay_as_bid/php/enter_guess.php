@@ -57,7 +57,8 @@ if (isset($_COOKIE["userID"])) {
 
 <p>You only need to bid a price of your production; The amount you produce will be determined in real time.</p>
 
-<p>Your marginal cost of production is <b><?php echo number_format(($cookie * 10.0) / 30000 + 5.0, 2, '.', ','); ?> </b>&#36;&#47;MW.</p>
+<!-- <p>Your marginal cost of production is <b><?php echo number_format(($cookie * 10.0) / 30000 + 5.0, 2, '.', ','); ?> </b>&#36;&#47;MW.</p> -->
+<p>Your marginal cost of production is <b>0.00</b>&#36;&#47;MW. As this is a pay-as-bid market, you will have to bid at a higher price than this to make a profit.</p>
 
 <form method="post" action="index.php?page=guess">  <!-- action="<?php echo htmlspecialchars($_SERVER["PHP_SELF "]);?>"> -->
 Name: <input type="text" name="name" value="<?php echo $name;?>">
