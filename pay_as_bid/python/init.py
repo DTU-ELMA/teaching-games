@@ -160,7 +160,7 @@ class Market:
     def write_stats_file(self):
         outArr = []
         for pid,p in self.players.iteritems():
-            outArr.append(map(float,[p.ID,p.curbid,p.curprod,p.schedprod,p.pabprofitlist[-1]]))
+            outArr.append(map(float,[p.ID,p.curbid,p.curprod,p.schedprod,sum(p.pabprofitlist)])
         np.savetxt('../php/stats.txt',outArr,fmt='%d,%.02f,%.02f,%.02f,%.02f')
 
 
