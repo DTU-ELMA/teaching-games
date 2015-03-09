@@ -1,6 +1,6 @@
 <h2>Results</h2>
 
-<p></p>
+<p><img src="pic/out.png" alt="Mountain View" style="width:600px;height:500px"></p>
 
 <?php
 

@@ -87,7 +87,15 @@ class Market:
 
     def plot(self):
         plt.ion()
-        plt.figure(1)
+        plt.figure(1, figsize=(6,5), dpi=100)
+        plt.subplot(121)
+        plt.cla()
+        self.plot_bid_curve()
+        plt.subplot(122)
+        plt.cla()
+        self.plot_profits()
+        plt.savefig('../pic/out.png')
+        plt.figure(2, figsize=(6,5), dpi=100)
         plt.subplot(121)
         plt.cla()
         self.plot_bid_curve()
@@ -133,7 +141,6 @@ class Market:
         plt.axvline(self.demand,lw=3,ls='--',c='k')
         plt.axhline(sybidless[-1],lw=3,ls=':',c='k')
         plt.title('Final price: {:.02f}'.format(symcless[-1]))
-        plt.plot
 
 
     def plot_profits(self):
