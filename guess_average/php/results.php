@@ -74,10 +74,15 @@ echo "</font></p>";
 
 
 echo "<table>";
-  echo "<tr><td>"."Name"."</td><td>"."Guess"."</td></tr>";
+//   echo "<tr><td>"."Name"."</td><td>"."Guess"."</td></tr>";
 
+// foreach ($guessarray as $userID => $part){
+//   echo "<tr><td>".$part[0]."</td><td>".$part[1]."</td></tr>";
+// }
+echo "<tr>";
 foreach ($guessarray as $userID => $part){
-  echo "<tr><td>".$part[0]."</td><td>".$part[1]."</td></tr>";
+  echo "<td>".$part[1]."</td>";
 }
+echo "</tr>"
 echo "</table>";
 ?>
