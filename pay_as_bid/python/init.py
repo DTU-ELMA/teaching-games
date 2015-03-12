@@ -49,7 +49,7 @@ class Market:
             self.players[ID] = Player(ID,name)
             self.players[ID].setbid(float(bid))
             self._playerlist.add(ID)
-        self.demand = 8*len(self._playerlist)
+        self.demand = 9*len(self._playerlist)
         self.schedule_production()
         for p in self.players.itervalues():
             p.push_bid_and_profit(self.get_current_pay_as_bid_price())
