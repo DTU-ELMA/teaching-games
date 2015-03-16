@@ -7,7 +7,7 @@
 </p>
 
 <p>
-    The demand on the system will be 8MWh times the number of players (you may become a marginal producer).
+    The demand on the system will be 9MWh times the number of players (you may become a marginal producer).
     Any residual demand will be handled by a large oil plant with a marginal cost of 100&#36;&#47;MWh.
 </p>
 
