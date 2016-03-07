@@ -1,16 +1,26 @@
 <h2>Bidding into a pay-as-bid market</h2>
 
 <p>
-    Each person gets a wind turbine which can produce at either 5, 10 or 15 MW in each hour at a marginal cost of between 5-15&#36;&#47;MWh.
+    Each team gets a wind turbine which can produce at a marginal cost of 0&#36;&#47;MWh.
     A bid consists only of a cost for the turbine's production, in compliance with regulations that stipulate that all available wind production must be used.
-    The bids are given before this uncertainty is revealed, and subsequently remunerated based on the actual production.
+    In real time, each wind turbine will generate 5, 10 or 15 MWh, with each possibility being equally likely.
 </p>
 
 <p>
-    The demand on the system will be 9MWh times the number of players (you may become a marginal producer).
-    Any residual demand will be handled by a large oil plant with a marginal cost of 100&#36;&#47;MWh.
+    In case the total wind production is not enough to cope with demand, any residual demand will be handled by a large oil plant with a marginal cost of 100&#36;&#47;MWh.
+    The demand for each hour is projected to be such that there is a 10% chance that the oil plant will be activated.
+    For the remaining 90% of the time, a wind plant will be the marginal producer.
 </p>
 
 <p>
-Your objective is as always to maximize your profits from selling the wind production of your wind turbine.
+    The market is pay-as-bid.
+    This means that your revenue is equal to <i>your bidded price</i> times your scheduled production, regardless of the marginal producer's bid.
+    If you bid at 0&#36;&#47;MWh, you will earn nothing, even if you are scheduled.
+    On the other hand, if you bid too high a price, then you may not get scheduled, and will not gain anything either.
 </p>
+
+<p>
+     Your objective is to maximize your profits from selling the wind production of your wind turbine.
+     The team who has made the most money at the end of 5 bidding rounds will win a price.
+</p>
+

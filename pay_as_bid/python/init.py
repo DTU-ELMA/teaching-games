@@ -49,11 +49,14 @@ class Market:
             self.players[ID] = Player(ID,name)
             self.players[ID].setbid(float(bid))
             self._playerlist.add(ID)
-        self.demand = 9*len(self._playerlist)
+	self.nplayers = len(self._playerlist)
+	# Set demand so there is a 10% chance of using the large power plant
+        self.demand = 10*self.nplayers - 5*1.28*0.8165*np.sqrt(self.nplayers)
         self.schedule_production()
+	curprice = self.get_current_pay_as_bid_price()
         for p in self.players.itervalues():
-            p.push_bid_and_profit(self.get_current_pay_as_bid_price())
-        self.papricelist = [self.get_current_pay_as_bid_price()]
+            p.push_bid_and_profit(curprice)
+        self.papricelist = [curprice]
         self.write_stats_file()
 
     def readfile(self):
@@ -76,7 +79,7 @@ class Market:
         pids = {pid:self.players[pid].curbid for pid in self._playerlist}
         pids = sorted(pids.keys(), key=pids.get)
         for pid in pids:
-            x-= self.players[pid].curprod
+            x -= self.players[pid].curprod
             if x < 0:
                 return self.players[pid].curbid
         return 100.00
@@ -110,9 +113,6 @@ class Market:
         plt.cla()
         self.plot_profits()
         plt.tight_layout()
-#        plt.figure(2)
-#        plt.clf()
-#        self.plot_mc_curve()
 
     def plot_bid_curve(self):
         pids = {pid:self.players[pid].curbid for pid in self._playerlist}

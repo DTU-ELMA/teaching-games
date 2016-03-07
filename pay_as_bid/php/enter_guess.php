@@ -53,8 +53,8 @@ if (isset($_COOKIE["userID"])) {
 
 <h2>Bid your wind production</h2>
 
-<p>Your wind production will be either 5, 10 or 15 MW. Everyone else's wind production is uncorrelated from yours. Total system load is 9 MW per player (with 10 players the load will be 90 MW). 
-Any uncovered load will be covered by an oil plant at 100&#36;&#47;MW.</p>
+<p>Your wind production will be either 5, 10 or 15 MW. Everyone else's wind production is uncorrelated from yours.
+Any uncovered load will be covered by an oil plant at 100&#36;&#47;MW, which is expected to be activated 10% of the time.</p>
 
 <p>You only need to bid a price of your production; The amount you produce will be determined in real time.</p>
 
